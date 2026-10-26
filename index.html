@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ایگزام ماسٹر — آپ کا تدریسی ساتھی | Exam Master</title>
+<meta name="description" content="ایگزام ماسٹر: اساتذہ کے لیے مکمل اینڈرائیڈ ایپ — 35,000 سے زائد سوالات، QAT پیٹرن پیپر، لیسن پلان، روزانہ ٹیسٹ، ورک شیٹ، اہم نکات اور پوسٹر — مکمل آف لائن۔ سالانہ فیس 16,000 روپے۔">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#0CB1FD; --blue-dark:#0783C4; --blue-deep:#045A8A;
+    --navy:#07304A; --ink:#10262F; --muted:#4A6572;
+    --bg:#F2F9FE; --card:#FFFFFF; --line:#D9EDF9;
+    --green:#22A95C; --green-dark:#178A48;
+    --shadow:0 10px 30px rgba(7,90,138,.13);
+    --shadow-lg:0 22px 55px rgba(7,90,138,.22);
+    --radius:20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq',serif;
+    background:var(--bg); color:var(--ink);
+    line-height:2.1; font-size:17px;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:86px;
+  }
+  img{max-width:100%;display:block}
+  a{text-decoration:none}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 18px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(165deg,#39C2FF 0%,var(--blue) 34%,var(--blue-dark) 72%,var(--blue-deep) 100%);
+    color:#fff; position:relative; overflow:hidden;
+    padding:44px 0 64px;
+  }
+  .hero::before,.hero::after{
+    content:""; position:absolute; border-radius:50%;
+    background:rgba(255,255,255,.10);
+  }
+  .hero::before{width:340px;height:340px;top:-140px;inset-inline-start:-110px}
+  .hero::after{width:230px;height:230px;bottom:-110px;inset-inline-end:-70px;background:rgba(255,255,255,.08)}
+  .hero .wrap{position:relative;z-index:1;text-align:center}
+  .hero .logo{
+    width:min(330px,80vw); height:auto; margin:0 auto 4px;
+    background:#fff; border-radius:20px; padding:12px 20px 6px;
+    box-shadow:0 14px 34px rgba(0,45,85,.30);
+  }
+  .hero h1{
+    font-size:clamp(2.3rem,9vw,3.6rem); font-weight:700; line-height:1.75;
+    text-shadow:0 3px 14px rgba(0,50,90,.35); padding-top:16px;
+  }
+  .hero .tagline{
+    font-size:clamp(1.12rem,4.6vw,1.5rem); font-weight:600; line-height:2;
+    max-width:640px; margin:2px auto 0;
+  }
+  .hero .sub{
+    font-size:clamp(.98rem,4vw,1.12rem); line-height:2.1; opacity:.96;
+    max-width:600px; margin:4px auto 0;
+  }
+  .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:inherit;font-weight:700;font-size:1.02rem;line-height:1;
+    padding:15px 26px 11px;border-radius:999px;cursor:pointer;border:0;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn-white{background:#fff;color:var(--blue-deep);box-shadow:0 10px 24px rgba(0,45,80,.28)}
+  .btn-outline{background:rgba(255,255,255,.14);color:#fff;border:2px solid rgba(255,255,255,.75)}
+  .btn svg{width:20px;height:20px;flex:0 0 auto}
+
+  /* phone showcase */
+  .phone{
+    width:min(320px,84vw); margin:34px auto 0;
+    background:#0A2436; border-radius:42px; padding:11px;
+    box-shadow:var(--shadow-lg), inset 0 0 0 2px rgba(255,255,255,.14);
+  }
+  .phone .screen{border-radius:33px;overflow:hidden;background:#000;position:relative}
+  .phone video{width:100%;aspect-ratio:9/16;display:block;background:#000}
+  .hero .watch-note{margin-top:14px;font-size:.95rem;opacity:.92}
+
+  /* stats */
+  .stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+    max-width:760px;margin:-34px auto 0;position:relative;z-index:2;
+  }
+  .stat{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    box-shadow:var(--shadow);text-align:center;padding:16px 6px 10px;
+  }
+  .stat b{display:block;font-size:1.28rem;color:var(--blue-deep);line-height:1.5;font-weight:700}
+  .stat span{font-size:.86rem;color:var(--muted);line-height:1.8;display:block}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:56px 0 8px}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 30px}
+  .sec-head .kicker{
+    display:inline-block;background:#E1F4FE;color:var(--blue-deep);
+    font-size:.85rem;font-weight:700;border-radius:999px;padding:5px 16px 1px;line-height:1.9;
+  }
+  .sec-head h2{font-size:clamp(1.55rem,6vw,2.15rem);font-weight:700;color:var(--navy);line-height:1.8;margin-top:8px}
+  .sec-head p{color:var(--muted);font-size:1rem;line-height:2.05}
+
+  .feat{
+    display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:28px;margin-bottom:26px;
+  }
+  .feat.flip .feat-text{order:2}
+  .feat h3{font-size:1.32rem;font-weight:700;color:var(--navy);line-height:1.8;display:flex;align-items:center;gap:11px}
+  .feat p{color:var(--muted);margin-top:4px;line-height:2.1}
+  .feat ul{list-style:none;margin-top:6px}
+  .feat li{color:var(--muted);padding-inline-start:26px;position:relative;line-height:2.05}
+  .feat li::before{content:"";position:absolute;inset-inline-start:2px;top:15px;width:9px;height:9px;border-radius:50%;background:var(--blue)}
+  .icon-chip{
+    width:44px;height:44px;flex:0 0 auto;border-radius:13px;
+    background:linear-gradient(150deg,var(--blue),var(--blue-dark));
+    display:inline-flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 14px rgba(12,177,253,.35);
+  }
+  .icon-chip svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .shot{
+    border-radius:16px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:0 14px 34px rgba(7,90,138,.16);background:#EAF6FD;
+  }
+  .shot img{width:100%;height:auto}
+  .shot figcaption{
+    background:#F5FBFF;color:var(--blue-deep);font-size:.86rem;font-weight:600;
+    text-align:center;padding:8px 10px 4px;line-height:1.9;border-top:1px solid var(--line);
+  }
+  .shot.tall img{max-height:520px;object-fit:cover;object-position:top}
+
+  /* five tools */
+  .tools{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
+  }
+  .tool{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    box-shadow:var(--shadow);overflow:hidden;text-align:center;
+  }
+  .tool .timg{height:190px;overflow:hidden;background:#EAF6FD}
+  .tool .timg img{width:100%;height:100%;object-fit:cover;object-position:top}
+  .tool h4{font-size:.98rem;font-weight:700;color:var(--navy);line-height:1.8;padding:10px 6px 2px}
+  .tool p{font-size:.82rem;color:var(--muted);line-height:1.85;padding:0 8px 10px}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .step{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:24px 20px 14px;text-align:center;position:relative;
+  }
+  .step .num{
+    width:52px;height:52px;margin:0 auto 8px;border-radius:50%;
+    background:linear-gradient(150deg,var(--blue),var(--blue-dark));color:#fff;
+    font-size:1.35rem;font-weight:700;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 18px rgba(12,177,253,.4);line-height:1;padding-top:6px;
+  }
+  .step h3{font-size:1.12rem;font-weight:700;color:var(--navy);line-height:1.8}
+  .step p{color:var(--muted);font-size:.94rem;line-height:2}
+
+  /* ---------- PRICE ---------- */
+  .price-card{
+    background:linear-gradient(160deg,#0D9BE8,var(--blue-deep));
+    border-radius:26px;color:#fff;text-align:center;
+    padding:40px 22px 30px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+  }
+  .price-card::before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.09);top:-130px;inset-inline-end:-90px}
+  .price-card .plabel{font-size:1.05rem;font-weight:600;opacity:.95;position:relative}
+  .price-card .amount{
+    font-size:clamp(2.5rem,11vw,3.9rem);font-weight:700;line-height:1.5;position:relative;
+    font-family:'Noto Nastaliq Urdu',serif;
+  }
+  .price-card .amount .num{font-variant-numeric:tabular-nums;letter-spacing:.5px}
+  .price-card .pnote{opacity:.94;font-size:.98rem;max-width:520px;margin:2px auto 0;position:relative;line-height:2.05}
+  .price-feats{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px;position:relative}
+  .price-feats span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 15px 2px;font-size:.88rem;line-height:1.9}
+
+  /* ---------- PAYMENT ---------- */
+  .pay-card{
+    background:var(--card);border:2px solid #BDE6FF;border-radius:26px;
+    box-shadow:var(--shadow-lg);padding:32px 22px 24px;text-align:center;margin-top:26px;
+  }
+  .pay-card h2{font-size:1.5rem;font-weight:700;color:var(--navy);line-height:1.8}
+  .pay-method{
+    display:inline-flex;align-items:center;gap:9px;margin-top:6px;
+    background:#EAFBF1;color:var(--green-dark);font-weight:700;font-size:1.05rem;
+    border-radius:999px;padding:8px 20px 4px;line-height:1.9;border:1px solid #BDEBD2;
+  }
+  .pay-number{
+    direction:ltr;unicode-bidi:embed;
+    font-family:Arial,Helvetica,sans-serif;font-weight:800;
+    font-size:clamp(1.9rem,9vw,2.7rem);letter-spacing:2.5px;color:var(--navy);
+    margin-top:10px;line-height:1.3;
+  }
+  .pay-name{font-size:1.08rem;color:var(--ink);margin-top:2px}
+  .pay-name b{color:var(--blue-deep)}
+  .copy-btn{
+    margin-top:12px;background:#EAF6FD;color:var(--blue-deep);border:1.5px solid var(--blue);
+    font-family:inherit;font-weight:700;font-size:.95rem;border-radius:999px;
+    padding:11px 24px 7px;cursor:pointer;line-height:1.6;transition:background .15s;
+  }
+  .copy-btn:active{background:#D5EFFF}
+  .pay-steps{max-width:520px;margin:20px auto 0;text-align:start}
+  .pay-steps li{list-style:none;position:relative;padding-inline-start:38px;color:var(--muted);line-height:2.05;margin-bottom:4px}
+  .pay-steps li .n{
+    position:absolute;inset-inline-start:0;top:7px;width:26px;height:26px;border-radius:50%;
+    background:var(--blue);color:#fff;font-size:.85rem;font-weight:700;
+    display:flex;align-items:center;justify-content:center;line-height:1;padding-top:3px;
+    font-family:Arial,sans-serif;
+  }
+  .wa-btn{
+    display:flex;align-items:center;justify-content:center;gap:11px;
+    background:linear-gradient(150deg,#2BC46A,var(--green-dark));color:#fff;
+    font-weight:700;font-size:1.12rem;border-radius:999px;
+    padding:17px 26px 13px;margin-top:22px;box-shadow:0 14px 30px rgba(34,169,92,.38);
+    line-height:1.5;
+  }
+  .wa-btn svg{width:26px;height:26px;fill:#fff;flex:0 0 auto}
+  .wa-note{font-size:.88rem;color:var(--muted);margin-top:10px;line-height:1.95}
+
+  footer{
+    text-align:center;color:var(--muted);padding:44px 18px 20px;font-size:.92rem;line-height:2;
+  }
+  footer .flogo{width:190px;margin:0 auto 6px;opacity:.97;border-radius:12px}
+  footer b{color:var(--blue-deep)}
+
+  /* sticky CTA */
+  .sticky-cta{
+    position:fixed;bottom:0;inset-inline:0;z-index:50;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(7,90,138,.12);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    display:flex;align-items:center;gap:12px;
+  }
+  .sticky-cta .txt{flex:1;line-height:1.75;font-size:.9rem;color:var(--ink)}
+  .sticky-cta .txt b{color:var(--blue-deep);font-size:1rem}
+  .sticky-cta a{
+    background:linear-gradient(150deg,#2BC46A,var(--green-dark));color:#fff;font-weight:700;
+    border-radius:999px;padding:13px 22px 9px;display:inline-flex;align-items:center;gap:8px;
+    box-shadow:0 8px 20px rgba(34,169,92,.35);line-height:1.4;font-size:.98rem;white-space:nowrap;
+  }
+  .sticky-cta a svg{width:20px;height:20px;fill:#fff}
+
+  @media (max-width:820px){
+    .tools{grid-template-columns:repeat(2,1fr)}
+    .tool:last-child{grid-column:1/-1}
+    .tool:last-child .timg{height:230px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .feat{grid-template-columns:1fr;padding:22px}
+    .feat.flip .feat-text{order:0}
+    .steps{grid-template-columns:1fr}
+    section{padding:44px 0 4px}
+  }
+  @media (min-width:821px){
+    body{padding-bottom:0}
+    .sticky-cta{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <img class="logo" src="assets/logo.png" alt="Exam Master — ایگزام ماسٹر">
+    <h1>ایگزام ماسٹر</h1>
+    <p class="tagline">آپ کا تدریسی ساتھی — روز کا پیپر، لیسن پلان اور ورک شیٹ، اب منٹوں میں تیار</p>
+    <p class="sub">پلے گروپ سے دسویں جماعت تک 35,000 سے زائد سوالات، پورے سال کا تعلیمی کیلنڈر، اور روزانہ کے تمام تدریسی اوزار — ایک ہی اینڈرائیڈ ایپ میں، مکمل آف لائن۔</p>
+    <div class="hero-ctas">
+      <a class="btn btn-white" href="#payment">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11L9.5 22 19 10h-6.5L13 2z"/></svg>
+        ابھی حاصل کریں
+      </a>
+      <a class="btn btn-outline" href="#features">خصوصیات دیکھیں</a>
+    </div>
+
+    <div class="phone" aria-label="ایگزام ماسٹر تعارفی ویڈیو">
+      <div class="screen">
+        <video controls playsinline preload="none" poster="assets/video-poster.jpg" src="intro-video.mp4"></video>
+      </div>
+    </div>
+    <p class="watch-note">تعارفی ویڈیو دیکھیں — ڈیڑھ منٹ میں پوری ایپ کا جائزہ</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b>35,000+</b><span>سوالات کا بینک</span></div>
+    <div class="stat"><b>پلے گروپ تا کلاس 10</b><span>تمام جماعتیں و مضامین</span></div>
+    <div class="stat"><b>5</b><span>روزانہ کے تیار اوزار</span></div>
+    <div class="stat"><b>100%</b><span>مکمل آف لائن</span></div>
+  </div>
+</div>
+
+<!-- ================= FEATURES ================= -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">مکمل تعارف</span>
+      <h2>ایک ایپ — استاد کے سارے کام</h2>
+      <p>پیپر بنانا ہو، لیسن پلان چاہیے ہو یا روز کا ٹیسٹ — ہر چیز پہلے سے تیار، بس منتخب کریں اور پرنٹ کر دیں۔</p>
+    </div>
+
+    <article class="feat">
+      <div class="feat-text">
+        <h3><span class="icon-chip"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.66 3.58 3 8 3s8-1.34 8-3v-13"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></span>سوالاتی بینک</h3>
+        <p>پلے گروپ سے دسویں جماعت تک، تمام مضامین کے 35,000 سے زائد سوالات — ہر سوال اپنے باب اور موضوع کے ساتھ مکمل ترتیب میں۔</p>
+        <ul>
+          <li>ہر موضوع کے سوالات کی تعداد سامنے نظر آتی ہے</li>
+          <li>باب یا موضوع — جتنا چاہیں منتخب کریں</li>
+        </ul>
+      </div>
+      <figure class="shot tall">
+        <img src="assets/paper-setup.jpg" alt="سوالاتی بینک — موضوعات اور سوالات کی تعداد" loading="lazy" decoding="async">
+        <figcaption>سوالاتی بینک — ہر موضوع، گنتی کے ساتھ</figcaption>
+      </figure>
+    </article>
+
+    <article class="feat flip">
+      <div class="feat-text">
+        <h3><span class="icon-chip"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>پیپر بنائیں — یا کوئز</h3>
+        <p>مضمون اور ابواب منتخب کریں، QAT پیٹرن کے عین مطابق مکمل پیپر چند منٹوں میں تیار — اسکول کے نام اور مکمل سرخی کے ساتھ۔</p>
+        <ul>
+          <li>انگریزی، اردو یا دونوں زبانوں میں پیپر</li>
+          <li>انہی سوالات سے اِنٹرایکٹو MCQ کوئز بھی چلائیں</li>
+        </ul>
+      </div>
+      <figure class="shot tall">
+        <img src="assets/paper.jpg" alt="QAT پیٹرن پر تیار شدہ پیپر" loading="lazy" decoding="async">
+        <figcaption>QAT پیٹرن کا تیار پیپر</figcaption>
+      </figure>
+    </article>
+
+    <article class="feat">
+      <div class="feat-text">
+        <h3><span class="icon-chip"><svg viewBox="0 0 24 24"><path d="M4 8h10M18 8h2M4 16h4M12 16h8"/><circle cx="16" cy="8" r="2.2"/><circle cx="10" cy="16" r="2.2"/></svg></span>کسٹم پیپر فارمیٹ</h3>
+        <p>اپنی ضرورت کا فارمیٹ خود بنائیں — حصے، سوالات کی تعداد اور نمبر اپنی مرضی سے طے کر کے محفوظ کر لیں، اور بار بار استعمال کریں۔</p>
+      </div>
+      <figure class="shot tall">
+        <img src="assets/custom-format.jpg" alt="کسٹم پیپر فارمیٹ ایڈیٹر" loading="lazy" decoding="async">
+        <figcaption>کسٹم فارمیٹ — اپنی مرضی کا پیپر ڈھانچا</figcaption>
+      </figure>
+    </article>
+
+    <article class="feat flip">
+      <div class="feat-text">
+        <h3><span class="icon-chip"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>تعلیمی کیلنڈر</h3>
+        <p>پورے تعلیمی سال کا کیلنڈر پہلے سے موجود ہے — ہر دن، ہر جماعت کا نصاب طے شدہ۔ آپ کو صرف دن کھولنا ہے۔</p>
+        <ul>
+          <li>مہینہ ← ہفتہ ← دن: تینوں منظر ایک نظر میں</li>
+          <li>دن کا کام "Share as Diary" سے ڈائری بنا کر شیئر کریں</li>
+        </ul>
+      </div>
+      <figure class="shot tall">
+        <img src="assets/calendar.jpg" alt="تعلیمی کیلنڈر — مہینے کا منظر" loading="lazy" decoding="async">
+        <figcaption>تعلیمی کیلنڈر — پورے سال کا منصوبہ</figcaption>
+      </figure>
+    </article>
+  </div>
+</section>
+
+<!-- ================= FIVE TOOLS ================= -->
+<section id="tools">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">روزانہ کے اوزار</span>
+      <h2>ہر دن کے موضوع کے لیے 5 چیزیں — پہلے سے تیار</h2>
+      <p>دن کھولیں اور پانچوں اوزار حاضر: انگریزی میں، اردو میں، یا دونوں زبانوں میں — پرنٹ کریں یا شیئر کر دیں۔</p>
+    </div>
+    <div class="tools">
+      <div class="tool">
+        <div class="timg"><img src="assets/lesson-plan.jpg" alt="لیسین پلان" loading="lazy" decoding="async"></div>
+        <h4>لیسین پلان</h4><p>مکمل، تیار شدہ لیسن پلان</p>
+      </div>
+      <div class="tool">
+        <div class="timg"><img src="assets/daily-test.jpg" alt="روزانہ کا ٹیسٹ" loading="lazy" decoding="async"></div>
+        <h4>روزانہ کا ٹیسٹ</h4><p>دن کے موضوع کا فوری ٹیسٹ</p>
+      </div>
+      <div class="tool">
+        <div class="timg"><img src="assets/worksheet.jpg" alt="ورک شیٹ" loading="lazy" decoding="async"></div>
+        <h4>ورک شیٹ</h4><p>کلاس ورک / ہوم ورک شیٹ</p>
+      </div>
+      <div class="tool">
+        <div class="timg"><img src="assets/key-points.jpg" alt="اہم نکات" loading="lazy" decoding="async"></div>
+        <h4>اہم نکات</h4><p>موضوع کے اہم نکات ایک نظر میں</p>
+      </div>
+      <div class="tool">
+        <div class="timg"><img src="assets/poster-tool.jpg" alt="رنگین وضاحتی پوسٹر" loading="lazy" decoding="async"></div>
+        <h4>رنگین پوسٹر</h4><p>وضاحتی پوسٹر — کلاس کے لیے</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STUDY BOOK + OFFLINE ================= -->
+<section id="more">
+  <div class="wrap">
+    <article class="feat">
+      <div class="feat-text">
+        <h3><span class="icon-chip"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>اسٹڈی بک بنائیں</h3>
+        <p>اسی ایپ سے اپنی اسٹڈی بک بھی تیار کریں، اور ہر کام PDF، Word یا InPage میں محفوظ کر کے اسی وقت پرنٹ کر لیں۔</p>
+        <ul>
+          <li>پیپر موبائل میں محفوظ کریں یا فوراً پرنٹ کریں</li>
+          <li>Save as PDF (Print) — Word — InPage</li>
+        </ul>
+      </div>
+      <figure class="shot tall">
+        <img src="assets/study-book.jpg" alt="اسٹڈی بک — تیار شدہ کتاب" loading="lazy" decoding="async">
+        <figcaption>اسٹڈی بک — ایپ سے تیار</figcaption>
+      </figure>
+    </article>
+
+    <article class="feat flip">
+      <div class="feat-text">
+        <h3><span class="icon-chip"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.4" r="1.3" fill="#fff" stroke="none"/><path d="M3 3l18 18"/></svg></span>مکمل آف لائن</h3>
+        <p>سب سے اہم بات: یہ سب کچھ بغیر انٹرنیٹ کے چلتا ہے۔ کلاس میں نیٹ ہو یا نہ ہو، آپ کا کام کبھی نہیں رکتا۔</p>
+        <ul>
+          <li>سارا بینک اور کیلنڈر فون کے اندر موجود</li>
+          <li>گاؤں ہو یا شہر — ہر اسکول کے لیے یکساں مفید</li>
+        </ul>
+      </div>
+      <figure class="shot tall">
+        <img src="assets/dashboard.jpg" alt="ایگزام ماسٹر ڈیش بورڈ — تمام حصے ایک جگہ" loading="lazy" decoding="async">
+        <figcaption>ڈیش بورڈ — سارے کام ایک ہی جگہ</figcaption>
+      </figure>
+    </article>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">طریقہ کار</span>
+      <h2>کیسے کام کرتا ہے؟ — صرف 3 قدم</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>ایپ حاصل کریں</h3>
+        <p>نیچے دیے گئے طریقے سے سالانہ رکنیت لیں اور ایپ اپنے موبائل میں چلائیں۔</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>منتخب کریں</h3>
+        <p>جماعت، مضمون اور دن کھولیں — پیپر، لیسن پلان، ٹیسٹ اور ورک شیٹ سب تیار ملے گا۔</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>پرنٹ یا شیئر کریں</h3>
+        <p>کام محفوظ کریں، پرنٹ کریں یا ڈائری بنا کر شیئر کر دیں — بس، تیار!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICE ================= -->
+<section id="price">
+  <div class="wrap">
+    <div class="price-card">
+      <p class="plabel">ایگزام ماسٹر — سالانہ رکنیت</p>
+      <p class="amount"><span class="num">16,000</span> روپے سالانہ</p>
+      <p class="pnote">ایک بار ادائیگی — پورے ایک سال تک تمام خصوصیات کی مکمل رسائی: سوالاتی بینک، پیپر و کوئز، تعلیمی کیلنڈر، پانچوں روزانہ اوزار اور اسٹڈی بک۔</p>
+      <div class="price-feats">
+        <span>35,000+ سوالات</span><span>مکمل آف لائن</span><span>تمام جماعتیں و مضامین</span><span>پورے سال کی رسائی</span>
+      </div>
+    </div>
+
+    <!-- ================= PAYMENT ================= -->
+    <div class="pay-card" id="payment">
+      <h2>ادائیگی کا طریقہ</h2>
+      <div>
+        <span class="pay-method">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+          EasyPaisa اکاؤنٹ
+        </span>
+      </div>
+      <p class="pay-number" id="payNumber">03094313807</p>
+      <p class="pay-name">اکاؤنٹ نام: <b>ذوالفقار علی ساجد</b></p>
+      <button class="copy-btn" id="copyBtn" type="button">نمبر کاپی کریں</button>
+
+      <ol class="pay-steps">
+        <li><span class="n">1</span>اپنے EasyPaisa سے اوپر دیے گئے نمبر پر <b>16,000 روپے</b> بھیجیں۔</li>
+        <li><span class="n">2</span>ادائیگی کا <b>اسکرین شاٹ</b> لے لیں۔</li>
+        <li><span class="n">3</span>اسکرین شاٹ <b>اسی نمبر کے WhatsApp</b> پر بھیج دیں — نیچے والا بٹن دبائیں۔</li>
+      </ol>
+      <p class="wa-note">اسکرین شاٹ بھیجنے کے بعد رسائی کی تفصیل اسی نمبر سے فراہم کی جائے گی۔</p>
+
+      <a class="wa-btn" href="https://wa.me/923094313807?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%DB%8C%DA%A9%D9%85%D8%8C%20%D9%85%DB%8C%DA%BA%20%D9%86%DB%92%20%D8%A7%DB%8C%DA%AF%D8%B2%D8%A7%D9%85%20%D9%85%D8%A7%D8%B3%D9%B9%D8%B1%20%DA%A9%DB%8C%20%D8%B3%D8%A7%D9%84%D8%A7%D9%86%DB%81%20%D9%81%DB%8C%D8%B3%2016%2C000%20%D8%B1%D9%88%D9%BE%DB%92%20EasyPaisa%20%D8%B3%DB%92%20%D8%A7%D8%AF%D8%A7%20%DA%A9%D8%B1%20%D8%AF%DB%8C%20%DB%81%DB%92%D8%8C%20%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%86%20%D8%B4%D8%A7%D9%B9%20%D8%A8%DA%BE%DB%8C%D8%AC%20%D8%B1%DB%81%D8%A7%20%DB%81%D9%88%DA%BA" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.7.9 5.2 2.4 7.3L4 29l6.4-1.7c1.7 1 3.6 1.5 5.6 1.5 6.9 0 12.5-5.6 12.5-12.5S22.9 3 16 3zm0 22.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1.2-3.6-.2-.4a10.2 10.2 0 0 1-1.6-5.5C6.3 9.8 10.6 5.5 16 5.5S25.7 9.8 25.7 15.3 21.4 25.8 16 25.8zm5.6-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1a8.4 8.4 0 0 1-4.2-3.7c-.3-.6.3-.6.9-1.9.1-.2 0-.4 0-.5l-1-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.3-.9.8-.9 2.2s.9 2.6 1.1 2.8c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+        WhatsApp پر اسکرین شاٹ بھیجیں
+      </a>
+      <p class="wa-note">بٹن دبانے سے WhatsApp کھل جائے گا — تیار پیغام پہلے سے لکھا ہوگا، بس اسکرین شاٹ منسلک کر کے بھیج دیں۔</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img class="flogo" src="assets/logo.png" alt="Exam Master" loading="lazy">
+  <p><b>ایگزام ماسٹر</b> — آپ کا تدریسی ساتھی</p>
+  <p>ذوالفقار علی ساجد</p>
+</footer>
+
+<!-- sticky mobile CTA -->
+<div class="sticky-cta">
+  <div class="txt"><b>16,000 روپے سالانہ</b><br>ایگزام ماسٹر — مکمل آف لائن ایپ</div>
+  <a href="https://wa.me/923094313807?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%DB%8C%DA%A9%D9%85%D8%8C%20%D9%85%DB%8C%DA%BA%20%D9%86%DB%92%20%D8%A7%DB%8C%DA%AF%D8%B2%D8%A7%D9%85%20%D9%85%D8%A7%D8%B3%D9%B9%D8%B1%20%DA%A9%DB%8C%20%D8%B3%D8%A7%D9%84%D8%A7%D9%86%DB%81%20%D9%81%DB%8C%D8%B3%2016%2C000%20%D8%B1%D9%88%D9%BE%DB%92%20EasyPaisa%20%D8%B3%DB%92%20%D8%A7%D8%AF%D8%A7%20%DA%A9%D8%B1%20%D8%AF%DB%8C%20%DB%81%DB%92%D8%8C%20%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%86%20%D8%B4%D8%A7%D9%B9%20%D8%A8%DA%BE%DB%8C%D8%AC%20%D8%B1%81%D8%A7%20%DB%81%D9%88%DA%BA" target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.7.9 5.2 2.4 7.3L4 29l6.4-1.7c1.7 1 3.6 1.5 5.6 1.5 6.9 0 12.5-5.6 12.5-12.5S22.9 3 16 3zm0 22.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1.2-3.6-.2-.4a10.2 10.2 0 0 1-1.6-5.5C6.3 9.8 10.6 5.5 16 5.5S25.7 9.8 25.7 15.3 21.4 25.8 16 25.8zm5.6-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1a8.4 8.4 0 0 1-4.2-3.7c-.3-.6.3-.6.9-1.9.1-.2 0-.4 0-.5l-1-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.3-.9.8-.9 2.2s.9 2.6 1.1 2.8c.1.2 1.9 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+    WhatsApp کریں
+  </a>
+</div>
+
+<script>
+  (function(){
+    var btn = document.getElementById('copyBtn');
+    var num = document.getElementById('payNumber').textContent.trim();
+    btn.addEventListener('click', function(){
+      function done(){ btn.textContent = 'نمبر کاپی ہو گیا ✓'; setTimeout(function(){ btn.textContent = 'نمبر کاپی کریں'; }, 2200); }
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(num).then(done).catch(function(){ fallback(); });
+      } else { fallback(); }
+      function fallback(){
+        var ta = document.createElement('textarea');
+        ta.value = num; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch(e){}
+        document.body.removeChild(ta); done();
+      }
+    });
+  })();
+</script>
+</body>
+</html>
